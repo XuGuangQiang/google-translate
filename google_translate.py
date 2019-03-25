@@ -1,15 +1,24 @@
-
 #coding:utf-8
+from geopy.geocoders import Nominatim
+import urllib2
 import urllib
 import re  
 import requests
+import execjs 
 import codecs
 from retry import retry
+
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
+import csv
+import locale 
+locale.getdefaultlocale ()[1]
+
 import json
+import requests
 import execjs
+import sys
 import time
 if sys.version_info[0] == 2:  # Python 2
     from urllib import quote
@@ -121,8 +130,7 @@ def zh(content):
     js = Py4Js()
     tk = js.getTk(content)
     # content = quote(content)
-    url = "https://translate.google.cn/translate_a/single?client=webapp&sl=en&tl=zh-CN&hl=zh-CN&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&otf=2&ssel=0&tsel=0&kc=3&tk=%s&q=%s" % (
-    tk, content)
+    url = "https://translate.google.cn/translate_a/single?client=webapp&sl=en&tl=zh-CN&hl=zh-CN&dt=at&dt=bd&dt=ex&dt=ld&dt=md&dt=qca&dt=rw&dt=rm&dt=ss&dt=t&otf=1&ssel=3&tsel=6&kc=4&tk={}&q={}".format(tk, content)
     response = requests.get(url, headers=headers)
     result = response.content
     item = json.loads(result)
@@ -208,5 +216,5 @@ def get_zh(context):
 
 if __name__ == '__main__':
     # print get_zh('A man killed his daughter, son-in-law and two grandsons in the Jalalpur area. His motive was reportedly that his daughter chose her own husband four years ago.The incident took place in Pindi Bhattian, according to SAMAA TV correspondent Bilal Akbar.According to the police all four were killed using a sharp blade.The bodies have been sent to the local taluka headquarters hospital.The authorities say the man fled after the incident but the police were able to arrest him after conducting raids. A case has been registered against him at the Jalalpur Bhattian police station.')
-    print get_translate_zh("Topman Ren Zhengfei wast zijn handen in onschuld. Dan doen we gewoon beter ons best voor de landen die ons wel verwelkomen, zei hij dinsdag. Zijn lidmaatschap van de communistische partij betekent niet dat hij zijn klanten, waar dan ook ter wereld, zou schaden. ‘Het principe van handel is: de klant gaat voor. Mijn politieke overtuiging en zakelijk handelen zijn niet noodzakelijk intiem met elkaar verstrengeld.’Het voor Huawei rampzalige jaar 2018 werd afgerond met de arrestatie van Rens dochter Meng Wanzhou, financieel hoofd van het bedrijf. Ze werd vorige maand in Canada opgepakt op verzoek van de Verenigde Staten, die haar van fraude en het schenden van sancties met Iran beschuldigen. In Vancouver wacht ze onder strenge bewaking af of het daadwerkelijk tot uitlevering komt.Canadese clashDe verhoudingen tussen Canada en China zijn sindsdien ijzig. In China zijn bij wijze van vergeldingsmaatregel enkele Canadezen opgepakt, bijvoorbeeld met vage aantijgingen van spionage. Beijing voerde maandag de druk een tandje op: een Canadese man die betrokken zou zijn bij de smokkel van ruim 200 kilo amfetamine kreeg de doodstraf. Eerder was hij in een proces dat 2,5 jaar duurde tot vijftien jaar veroordeeld, maar in hoger beroep kwam de rechtbank in Dalian binnen enkele uren tot de conclusie dat die straf te licht was. De Canadese regering heeft dinsdag Beijing om genade gevraagd.")
-    # print get_translate("你好")
+    # print get_translate_zh("Topman Ren Zhengfei wast zijn handen in onschuld. Dan doen we gewoon beter ons best voor de landen die ons wel verwelkomen, zei hij dinsdag. Zijn lidmaatschap van de communistische partij betekent niet dat hij zijn klanten, waar dan ook ter wereld, zou schaden. ‘Het principe van handel is: de klant gaat voor. Mijn politieke overtuiging en zakelijk handelen zijn niet noodzakelijk intiem met elkaar verstrengeld.’Het voor Huawei rampzalige jaar 2018 werd afgerond met de arrestatie van Rens dochter Meng Wanzhou, financieel hoofd van het bedrijf. Ze werd vorige maand in Canada opgepakt op verzoek van de Verenigde Staten, die haar van fraude en het schenden van sancties met Iran beschuldigen. In Vancouver wacht ze onder strenge bewaking af of het daadwerkelijk tot uitlevering komt.Canadese clashDe verhoudingen tussen Canada en China zijn sindsdien ijzig. In China zijn bij wijze van vergeldingsmaatregel enkele Canadezen opgepakt, bijvoorbeeld met vage aantijgingen van spionage. Beijing voerde maandag de druk een tandje op: een Canadese man die betrokken zou zijn bij de smokkel van ruim 200 kilo amfetamine kreeg de doodstraf. Eerder was hij in een proces dat 2,5 jaar duurde tot vijftien jaar veroordeeld, maar in hoger beroep kwam de rechtbank in Dalian binnen enkele uren tot de conclusie dat die straf te licht was. De Canadese regering heeft dinsdag Beijing om genade gevraagd.")
+    print get_zh('hello').decode('utf-8')
