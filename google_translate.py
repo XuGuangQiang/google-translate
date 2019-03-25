@@ -1,5 +1,4 @@
 #coding:utf-8
-from geopy.geocoders import Nominatim
 import urllib2
 import urllib
 import re  
@@ -7,17 +6,11 @@ import requests
 import execjs 
 import codecs
 from retry import retry
-
 import sys
 reload(sys)
 sys.setdefaultencoding('utf8')
-import csv
-import locale 
-locale.getdefaultlocale ()[1]
-
 import json
 import requests
-import execjs
 import sys
 import time
 if sys.version_info[0] == 2:  # Python 2
@@ -25,7 +18,6 @@ if sys.version_info[0] == 2:  # Python 2
 else:  # Python 3
     from urllib.parse import quote
 import locale
-
 locale.getdefaultlocale()[1]
 
 headers = {"User-Agent": "Mozilla/5.0(Macintosh;IntelMacOSX10_7_0)AppleWebKit/535.11(KHTML,likeGecko)Chrome/17.0.963.56Safari/535.11",
